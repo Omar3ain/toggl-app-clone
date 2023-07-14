@@ -1,4 +1,5 @@
-<div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 280px; height: 100vh;">
+<div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 280px; height: 100vh; position: sticky;
+    top: 0;">
     <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
       <svg class="bi pe-none me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
       <span class="fs-4">Tracker</span>
@@ -37,19 +38,17 @@
       </li> %>
     </ul>
     <hr>
+    <% if user_signed_in? %>
     <div class="dropdown">
       <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
         <img src="https://www.pngfind.com/pngs/m/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.png" alt="" width="32" height="32" class="rounded-circle me-2">
-        <strong><%=@user.email %></strong>
+        <strong><%= current_user.email %></strong>
       </a>
-     <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-        <%# <li><a class="dropdown-item" href="#">New project...</a></li>
-        <li><a class="dropdown-item" href="#">Settings</a></li>
-        <li><a class="dropdown-item" href="#">Profile</a></li>
-        <li><hr class="dropdown-divider"></li> %>
+      <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
         <li>
           <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
         </li>
       </ul>
     </div>
+  <% end %>
   </div>

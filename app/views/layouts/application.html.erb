@@ -8,9 +8,25 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+
   </head>
 
-  <body style=" height: 100vh;">
-    <%= yield %>
+  <body style="overflow-x : hidden;">
+
+    <% unless current_page?(new_user_session_path) || current_page?(destroy_user_session_path) || current_page?(new_user_password_path)  || current_page?(new_user_registration_path) %>
+      <div class="row">
+        <div class="col-md-2">
+          <%= render 'shared/sidebar'%>
+        </div>
+        <div class="col-md-10">
+          <main class="m-1">
+            <%= yield %>
+          </main>
+        </div>
+      </div>
+    <% else %>
+      <%= yield %>
+    <% end %>
+
   </body>
 </html>
