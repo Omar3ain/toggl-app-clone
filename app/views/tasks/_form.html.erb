@@ -1,6 +1,6 @@
-<%= form_with(model: task) do |form| %>
+<%= form_with(model: task, class: "form") do |form| %>
   <% if task.errors.any? %>
-    <div style="color: red">
+    <div class="alert alert-danger">
       <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
 
       <ul>
@@ -11,27 +11,22 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+  <div class="mb-3">
+    <%= form.label :name, class: "form-label" %>
+    <%= form.text_field :name, class: "form-control" %>
   </div>
 
-  <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_area :description %>
+  <div class="mb-3">
+    <%= form.label :description, class: "form-label" %>
+    <%= form.text_area :description, class: "form-control" %>
   </div>
 
-  <div>
-    <%= form.label :project_id, style: "display: block" %>
-    <%= form.text_field :project_id %>
-  </div>
 
-  <div>
-    <%= form.label :time, style: "display: block" %>
-    <%= form.number_field :time %>
-  </div>
+    <div class="mb-3">
+      <%= form.hidden_field :project_id, value: project.id %>
+    </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="d-grid gap-2">
+    <%= form.submit "Create Task", class: "btn btn-primary" %>
   </div>
 <% end %>

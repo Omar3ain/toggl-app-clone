@@ -1,16 +1,16 @@
 <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 280px; height: 100vh; position: sticky;
     top: 0;">
     <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-      <svg class="bi pe-none me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
+      <i class="bi bi-alarm-fill m-1"></i>
       <span class="fs-4">Tracker</span>
     </a>
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
-      <li class="nav-item">
-        <a href="#" class="nav-link active" aria-current="page">
+     <li class="nav-item">
+        <%= link_to root_path, class: "nav-link active", "aria-current": "page" do %>
           <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"/></svg>
           Home
-        </a>
+        <% end %>
       </li>
       <%# <li>
         <a href="#" class="nav-link text-white">

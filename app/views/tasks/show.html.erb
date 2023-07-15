@@ -3,8 +3,8 @@
 <%= render @task %>
 
 <div>
-  <%= link_to "Edit this task", edit_task_path(@task) %> |
-  <%= link_to "Back to tasks", tasks_path %>
+  <%# <%= link_to "Edit this task", edit_task_path(@task) %>
+  <%= link_to "Back to Projects", projects_path %>
+   <%= button_to "Destroy this task",  @task, method: :delete, class: "form-control btn btn-danger", data: { confirm: "Are you sure you want to delete this task ?" } %>
 
-  <%= button_to "Destroy this task", @task, method: :delete %>
 </div>

@@ -3,8 +3,9 @@ class ProjectsController < ApplicationController
 
   # GET /projects or /projects.json
   def index
-    @projects = Project.all
+    @projects = current_user.projects
     @project = Project.new
+    @task = Task.new
   end
 
   # GET /projects/1 or /projects/1.json
@@ -51,10 +52,11 @@ class ProjectsController < ApplicationController
 
   # DELETE /projects/1 or /projects/1.json
   def destroy
+    @project.tasks.destroy_all
     @project.destroy
 
     respond_to do |format|
-      format.html { redirect_to projects_url, notice: "Project was successfully destroyed." }
+      format.html { redirect_to projects_url, notice: "Project and associated tasks were successfully destroyed." }
       format.json { head :no_content }
     end
   end
