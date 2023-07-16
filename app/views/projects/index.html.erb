@@ -5,7 +5,7 @@
       <div class="card-header">No projects found</div>
       <div class="card-body">
         <p class="card-text">You have not created any projects yet.</p>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#projectModal">
           Create new Project
         </button>
       </div>
@@ -224,7 +224,7 @@
 
     startButton.addEventListener("click", function() {
       if (currentTimerId) {
-        stopTimer(currentTimerId);
+        stopTimer(currentTimerId , projectId);
       }
 
       elapsedTimes[taskId] = parseInt(document.getElementById("elapsed-time-" + taskId).textContent || initialTime);
