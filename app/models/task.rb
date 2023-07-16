@@ -17,7 +17,7 @@ class Task < ApplicationRecord
   private
 
   def update_total_time
-      self.time = (Time.zone.now - self.started_at).to_i
+      self.time = self.time + (Time.zone.now - self.started_at).to_i
       self.save
   end
 end

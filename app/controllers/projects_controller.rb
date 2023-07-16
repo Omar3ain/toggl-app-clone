@@ -61,6 +61,16 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def project_tasks
+    project_id = params[:id]
+    tasks = Task.where(project_id: project_id)
+    total_time = tasks.sum(:time)
+
+    respond_to do |format|
+      format.json { render json: { tasks: tasks, total_time: total_time } }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_project
